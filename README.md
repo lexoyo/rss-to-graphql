@@ -19,7 +19,9 @@ Requires Python3.6 or later.
         -h, --help            Output usage information
         --feed_url FEED_URL   RSS feed url
         --port PORT           Server Port
-        --subscription_ttl SUBSCRIPTION_TTL Subscriptions refresh ttl, in seconds
+        --subscriptions_enabled SUBSCRIPTIONS_ENABLED Enable subscriptions, requres a redis cache
+        --subscription_ttl SUBSCRIPTION_TTL Subscriptions refresh time to live, in seconds
+        --redis_url REDIS_URL Redis url string, e.g. redis://[:password]@localhost:6379/0
 ```
 
 ## Subscriptions
