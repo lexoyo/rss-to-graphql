@@ -4,7 +4,9 @@ A microservice proxy to convert an RSS feed to a GraphQL API endpoint
 
 ## Install
 
-`shell $ pip install rss-to-graphql `
+```shell 
+    pip install rss-to-graphql 
+```
 
 Requires Python3.6 or later.
 

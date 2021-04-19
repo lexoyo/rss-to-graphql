@@ -19,13 +19,13 @@ setup(
     maintainer='Kuda Savanhu',
     description='A microservice proxy to convert an rss feed to a GraphQL API endpoint',
     long_description=open('README.md').read(),
-
+    long_description_content_type = "text/markdown",
     packages=find_packages(),
     install_requires=install_requires,
 
     keywords=['python', 'rss to graphql', 'requests', 'rss', 'graphql'],
     classifiers=[
-        'Development Status :: 3 - Alpha'
+        'Development Status :: 3 - Alpha',
         'License :: OSI Approved :: MIT License',
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.6',
@@ -35,8 +35,8 @@ setup(
         'Operating System :: OS Independent',
         'Environment :: Console',
         'Intended Audience :: Developers',
-        'Topic :: Utilities'
-        'Topic :: Internet :: WWW/HTTP :: WSGI :: Server'
-        'Topic :: Software Development :: Libraries :: Python Modules',
+        'Topic :: Utilities',
+        'Topic :: Internet :: WWW/HTTP :: WSGI :: Server',
+        'Topic :: Software Development :: Libraries :: Python Modules'
     ]
 )
