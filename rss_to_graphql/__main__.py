@@ -7,8 +7,10 @@ from gevent import pywsgi
 from geventwebsocket.handler import WebSocketHandler
 
 from rss_to_graphql import create_schema, render_graphiql
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 app.debug = True
 sockets = Sockets(app)
 
