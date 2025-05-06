@@ -26,6 +26,17 @@ Requires Python3.6 or later.
         --redis_url REDIS_URL Redis url string, e.g. redis://[:password]@localhost:6379/0
 ```
 
+### Environment Variables
+
+You can use the `FEED_URL` environment variable to specify the RSS feed URL instead of passing it as a `--feed_url` argument. This is particularly useful when running the service in a containerized environment.
+
+Example:
+
+```shell
+export FEED_URL=https://example.com/rss
+python -m rss_to_graphql --port 8900 --subscriptions_enabled true --redis_url redis://localhost:6379
+```
+
 ## Subscriptions
 
 Supports subscriptions for new itme in the feed. Items are refreshed based on the time-to-live provided by the feed or a user defined refresh period, defaults to 1 minute if neither is provided
