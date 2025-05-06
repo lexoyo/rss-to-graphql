@@ -37,6 +37,20 @@ export FEED_URL=https://example.com/rss
 python -m rss_to_graphql --port 8900 --subscriptions_enabled true --redis_url redis://localhost:6379
 ```
 
+## DockerHub Image
+
+The Docker image for this project is available on DockerHub:
+
+```
+silexlabs/rss-to-graphql
+```
+
+You can pull the image using:
+
+```bash
+docker pull silexlabs/rss-to-graphql
+```
+
 ## Subscriptions
 
 Supports subscriptions for new itme in the feed. Items are refreshed based on the time-to-live provided by the feed or a user defined refresh period, defaults to 1 minute if neither is provided
