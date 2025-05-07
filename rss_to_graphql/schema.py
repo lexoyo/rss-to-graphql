@@ -47,7 +47,6 @@ class map_schema:
         del rss["rss"]["channel"]['item']
         
         self.channel_schema = self.map(rss["rss"]["channel"])
-       
 
     def map(self, item):
         result = {}
@@ -79,7 +78,7 @@ class map_schema:
                 if bool(item[key]) and all(isinstance(i, int) for i in item[key]):
                     result[key] = graphene.List(graphene.Int)
                 
-                # check if list of dictionarys
+                # check if list of dictionaries
                 if bool(item[key]) and all(isinstance(i, dict) for i in item[key]):
                     if key not in self.types:
                         schema_type = type(key, (graphene.ObjectType,), self.map(item[key][0]))
@@ -90,7 +89,6 @@ class map_schema:
                     result[key] = graphene.List(schema_type)
         
         return result
-
 
 def create_schema(args):
 
@@ -121,7 +119,26 @@ def create_schema(args):
 
         def resolve_items(self, info):
             feed = fetch()
-            return feed["rss"]["channel"]["item"]
+            items = feed["rss"]["channel"]["item"]
+
+            for item in items:
+                # Ensure 'category' is always an array for each item
+                if "category" in item:
+                    if isinstance(item["category"], str):
+                        item["category"] = [item["category"]]
+                    elif not isinstance(item["category"], list):
+                        item["category"] = []
+
+                # Ensure 'media_content' is always a valid list or null
+                if "media_content" in item:
+                    if isinstance(item["media_content"], dict):
+                        # Convert single object to a list
+                        item["media_content"] = [item["media_content"]]
+                    elif not isinstance(item["media_content"], list):
+                        # If not a list or dict, set to None
+                        item["media_content"] = None
+
+            return items
 
         def resolve_channel(self, info):
             feed = fetch()
